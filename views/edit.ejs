@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/style.css">
+<title>Edit Character</title>
+</head>
+<body>
+<h1>Edit Character</h1>
+<form action="/users/update/<%= user.id %>" method="POST">
+    
+    <label for = "first_name">First Name:</label>
+    <input type = "text" name = "first_name" value="<%= user.first_name %>" required><br>
+    <br>
+    <label for = "last_name"> Last Name:</label>
+    <input type = "text" name = "last_name" value="<%= user.last_name %>" required><br>
+    <br>
+    <label for="age">Age:</label>
+    <input type="number" name="age" value="<%= user.age %>" required><br>
+    <br>
+    <label for = "race"> Race:</label>
+    <input type = "text" name = "race" value="<%= user.race %>" required><br>
+    <br> 
+    <label for = "dndclass"> D&D Class:</label>
+    <input type = "text" name = "dndclass" value="<%= user.dndclass %>" required><br>
+    <br>
+    <label for = "specialization"> Specialization:</label>
+    <input type = "text" name = "specialization" value="<%= user.specialization %>" required><br>
+    <br>   
+    <button type="submit">Update Character</button>
+</form>
+</body>
+</html>
+

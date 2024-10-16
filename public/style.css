@@ -1,0 +1,48 @@
+table, th, td {
+    border: 1px solid black; /* Adds a 1px solid border to the table, header, and cells */
+}
+table {
+    border-collapse: collapse; /* Ensures borders between cells do not double up */
+}
+td, th {
+    padding: 10px;
+}
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin-left: 25px;
+}
+select {
+    width:100%;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-input {
+    width: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.dropdown-options {
+    display: none; /* Hidden by default */
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    z-index: 1;
+    max-height: 150px; /* Set max height for scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+    width: 100%;
+}
+
+.dropdown-option {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.dropdown-option:hover {
+    background-color: #f0f0f0; /* Highlight on hover */
+}

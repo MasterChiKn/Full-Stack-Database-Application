@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/style.css">
+<title>Character List</title>
+</head>
+<body>
+    <h1>Character Creation</h1>
+    <a href="/users/new">Add New Character</a><br>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Race</th>
+            <th>D&D Class</th>
+            <th>Specialization</th>
+            <th>Changes & Removal</th>
+        </tr>
+        <% users.forEach(user => { %>
+        <tr>
+            <td><%= user.id %></td>
+            <td><%= user.first_name %></td>
+            <td><%= user.last_name %></td>
+            <td><%= user.age %></td>
+            <td><%= user.race %></td>
+            <td><%= user.dndclass %></td>
+            <td><%= user.specialization %></td>
+            <td>
+                <a href="/users/edit/<%= user.id %>">Edit Character</a> |
+                <a href="/users/delete/<%= user.id %>">Delete Character</a>
+            </td>
+        </tr>
+        <% }) %>
+        
+        
+    </table>
+</body>
+</html>
+

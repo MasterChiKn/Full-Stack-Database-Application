@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/style.css">
+<title>Add New Character</title>
+</head>
+<body>
+<h1>Add New Character</h1>
+<form action="/users" method="POST">
+    <label for = "first_name">First Name:</label>
+    <input type = "text" id = "firstNameInput" name = "first_name" placeholder = "Enter First Name" required><br>
+    <br>
+    <label for = "last_name"> Last Name:</label>
+    <input type = "text" id = "lastNameInput" name = "last_name" placeholder = "Enter Last Name" required><br>
+    <br>
+    <label for="age">Age:</label>
+    <input type="number" id = "ageInput" name="age" placeholder = "Enter Age" required><br>
+    <br>
+   
+    <div class = "dropdown"> 
+        <label for = "race"> Race:</label>
+        <input type ="text" id="raceInput" class = "dropdown-input" placeholder="Select or enter category" autocomplete = "off"> 
+        <div id="optionsContainer" class = "dropdown-options">
+            <div class="dropdown-option">Human</div>
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div>
+            <div class="dropdown-option">Drow</div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div>       
+        </div>
+    </div>
+    
+    <br>
+    <br>   
+    <div class = "dropdown">
+        <label for = "dndclass"> D&D Class:</label>
+        <input type = "text" id = "dndClassInput" class = "dropdown-input" name = "dndclass" placeholder = "Enter Class" required><br>
+        <div id="optionsContainer" class = "dropdown-options">
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div>
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div>  
+        </div>
+    </div>
+    
+    <br>
+    <div class = "dropdown">
+        <label for = "specialization"> Specialization:</label>
+        <input type = "text" id = "specializationInput" class = "dropdown-input" name = "specialization" placeholder = "Enter Specialization" required><br>
+        <div id="optionsContainer" class = "dropdown-options">
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+            <div class="dropdown-option"></div> 
+        </div>
+    
+    </div>
+    <br>
+    <!--Makes sure the right data types go into the categories and removes the wrong ones-->
+    <script>
+        document.getElementById('firstNameInput').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[0-9]/g, ''); // Remove any numbers
+        });
+        document.getElementById('lastNameInput').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[0-9]/g, ''); // Remove any numbers
+        });
+        document.getElementById('ageInput').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^0-9]/g, ''); // Allow only numbers
+        });
+        document.getElementById('raceInput').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[0-9]/g, ''); // Remove any numbers
+        });
+        document.getElementById('dndClassInput').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[0-9]/g, ''); // Remove any numbers
+        });
+        document.getElementById('specializationInput').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[0-9]/g, ''); // Remove any numbers
+        });
+
+        const raceInput = document.getElementById('raceInput');
+        const optionsContainer = document.getElementById('optionsContainer');
+        const options = document.querySelectorAll('.dropdown-option');
+
+        raceInput.addEventListener('focus', () => {
+            optionsContainer.style.display = 'block'; // Show dropdown on focus
+        });
+
+        raceInput.addEventListener('blur', () => {
+            setTimeout(() => {
+                optionsContainer.style.display = 'none'; // Hide dropdown when losing focus
+            }, 100);
+        });
+
+        options.forEach(option => {
+            option.addEventListener('click', () => {
+                input.value = option.textContent; // Set input value to clicked option
+                optionsContainer.style.display = 'none'; // Hide dropdown
+            });
+        });
+    </script>
+    <button type="submit">Add Character</button>
+</form>
+</body>
+</html>
+
+
+
+
+ 
