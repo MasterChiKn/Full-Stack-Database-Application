@@ -18,7 +18,7 @@
     <label for="age">Age:</label>
     <input type="number" id = "ageInput" name="age" placeholder = "Enter Age" required><br>
     <br>
-   
+    <!--Race Dropdown Menu-->
     <div class = "dropdown"> 
         <label for = "race"> Race:</label>
         <input type ="text" id="raceInput" class = "dropdown-input" placeholder="Select or enter category" autocomplete = "off"> 
@@ -32,46 +32,43 @@
             <div class="dropdown-option">Hill Dwarf</div> 
             <div class="dropdown-option">Mountain Dwarf</div> 
             <div class="dropdown-option">Halfling</div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div>       
+            <div class="dropdown-option">Lightfoot</div> 
+            <div class="dropdown-option">Stout</div> 
+            <div class="dropdown-option">Gnome</div> 
+            <div class="dropdown-option">Forest Gnome</div> 
+            <div class="dropdown-option">Rock Gnome</div> 
+            <div class="dropdown-option">Half-Elf</div> 
+            <div class="dropdown-option">Half-Orc</div> 
+            <div class="dropdown-option">Tiefling</div> 
+            <div class="dropdown-option">Dragonborn</div> 
+            <div class="dropdown-option">Aasimar</div> 
+            <div class="dropdown-option">Genasi</div> 
+            <div class="dropdown-option">Air Genasi</div> 
+            <div class="dropdown-option">Earth Genasi</div> 
+            <div class="dropdown-option">Fire Genasi</div> 
+            <div class="dropdown-option">Water Genasi</div> 
+            <div class="dropdown-option">Firbolg</div> 
+            <div class="dropdown-option">Kenku</div> 
+            <div class="dropdown-option">Lizardfolk</div> 
+            <div class="dropdown-option">Goliath</div> 
+            <div class="dropdown-option">Tabaxi</div> 
+            <div class="dropdown-option">Triton</div> 
+            <div class="dropdown-option">Yuan-ti Pureblood</div> 
+            <div class="dropdown-option">Kobold</div> 
+            <div class="dropdown-option">Goblin</div> 
+            <div class="dropdown-option">Orc</div> 
+            <div class="dropdown-option">Bugbear</div> 
+            <div class="dropdown-option">Hobgoblin</div> 
+            <div class="dropdown-option">Eladrin</div> 
+            <div class="dropdown-option">Fey Elf</div> 
+            <div class="dropdown-option">Satyr</div> 
+            <div class="dropdown-option">Gith</div> 
+            <div class="dropdown-option">Githyanki</div> 
+            <div class="dropdown-option">Githzerai</div>        
         </div>
     </div>
-    
-    <br>
     <br>   
+    <!--D&D Class Dropdown Menu-->
     <div class = "dropdown">
         <label for = "dndclass"> D&D Class:</label>
         <input type = "text" id = "dndClassInput" class = "dropdown-input" name = "dndclass" placeholder = "Enter Class" required><br>
@@ -90,8 +87,8 @@
             <div class="dropdown-option"></div>  
         </div>
     </div>
-    
     <br>
+    <!--Specialization Dropdown Menu-->
     <div class = "dropdown">
         <label for = "specialization"> Specialization:</label>
         <input type = "text" id = "specializationInput" class = "dropdown-input" name = "specialization" placeholder = "Enter Specialization" required><br>
@@ -149,7 +146,7 @@
             const specializationInput = document.getElementById('specializationInput')
             const optionsContainer = document.getElementById('optionsContainer');
             const options = document.querySelectorAll('.dropdown-option');
-
+            //Code for RaceInput
             // Show dropdown when input is focused
             raceInput.addEventListener('focus', () => {
                 console.log("Race input field focused, showing dropdown.");
@@ -172,6 +169,56 @@
                     raceInput.value = optionText; // Replace input field with the selected option's text
                     optionsContainer.style.display = 'none'; // Hide dropdown after selection
                     raceInput.focus(); // Focus back on the input field
+                });
+            });
+            //Code for dndClassInput
+            // Show dropdown when input is focused
+            dndClassInput.addEventListener('focus', () => {
+                console.log("dndClassInput field focused, showing dropdown.");
+                optionsContainer.style.display = 'block'; // Display dropdown when input is focused
+            });
+
+            // Hide dropdown if clicking outside of the dropdown and input
+            document.addEventListener('click', (event) => {
+                if (!dndClassInput.contains(event.target) && !optionsContainer.contains(event.target)) {
+                    console.log("Clicked outside the dropdown. Hiding dropdown.");
+                    optionsContainer.style.display = 'none'; // Hide dropdown if clicking outside
+                }
+            });
+
+            // Add click event to each option to update the input field
+            options.forEach(option => {
+                option.addEventListener('click', () => {
+                    const optionText = option.textContent.trim(); // Get the selected option's text
+                    console.log("Dropdown option clicked:", optionText); // Log the clicked option's text
+                    dndClassInput.value = optionText; // Replace input field with the selected option's text
+                    optionsContainer.style.display = 'none'; // Hide dropdown after selection
+                    dndClassInput.focus(); // Focus back on the input field
+                });
+            });
+            //Code for specializationInput
+            // Show dropdown when input is focused
+            specializationInput.addEventListener('focus', () => {
+                console.log("specializationInput field focused, showing dropdown.");
+                optionsContainer.style.display = 'block'; // Display dropdown when input is focused
+            });
+
+            // Hide dropdown if clicking outside of the dropdown and input
+            document.addEventListener('click', (event) => {
+                if (!specializationInput.contains(event.target) && !optionsContainer.contains(event.target)) {
+                    console.log("Clicked outside the dropdown. Hiding dropdown.");
+                    optionsContainer.style.display = 'none'; // Hide dropdown if clicking outside
+                }
+            });
+
+            // Add click event to each option to update the input field
+            options.forEach(option => {
+                option.addEventListener('click', () => {
+                    const optionText = option.textContent.trim(); // Get the selected option's text
+                    console.log("Dropdown option clicked:", optionText); // Log the clicked option's text
+                    specializationInput.value = optionText; // Replace input field with the selected option's text
+                    optionsContainer.style.display = 'none'; // Hide dropdown after selection
+                    specializationInput.focus(); // Focus back on the input field
                 });
             });
             document.getElementById('firstNameInput').addEventListener('input', function(e) {
