@@ -136,50 +136,67 @@
     
     </div>
     <br>
-    <!--Makes sure the right data types go into the categories and removes the wrong ones-->
-    <script>
-        document.getElementById('firstNameInput').addEventListener('input', function(e) {
-            this.value = this.value.replace(/[0-9]/g, ''); // Remove any numbers
-        });
-        document.getElementById('lastNameInput').addEventListener('input', function(e) {
-            this.value = this.value.replace(/[0-9]/g, ''); // Remove any numbers
-        });
-        document.getElementById('ageInput').addEventListener('input', function(e) {
-            this.value = this.value.replace(/[^0-9]/g, ''); // Allow only numbers
-        });
-        document.getElementById('raceInput').addEventListener('input', function(e) {
-            this.value = this.value.replace(/[0-9]/g, ''); // Remove any numbers
-        });
-        document.getElementById('dndClassInput').addEventListener('input', function(e) {
-            this.value = this.value.replace(/[0-9]/g, ''); // Remove any numbers
-        });
-        document.getElementById('specializationInput').addEventListener('input', function(e) {
-            this.value = this.value.replace(/[0-9]/g, ''); // Remove any numbers
-        });
-
-        const raceInput = document.getElementById('raceInput');
-        const optionsContainer = document.getElementById('optionsContainer');
-        const options = document.querySelectorAll('.dropdown-option');
-
-        raceInput.addEventListener('focus', () => {
-            optionsContainer.style.display = 'block'; // Show dropdown on focus
-        });
-
-        raceInput.addEventListener('blur', () => {
-            setTimeout(() => {
-                optionsContainer.style.display = 'none'; // Hide dropdown when losing focus
-            }, 100);
-        });
-
-        options.forEach(option => {
-            option.addEventListener('click', () => {
-                input.value = option.textContent; // Set input value to clicked option
-                optionsContainer.style.display = 'none'; // Hide dropdown
-            });
-        });
-    </script>
     <button type="submit">Add Character</button>
 </form>
+    <!--Makes sure the right data types go into the categories and removes the wrong ones-->
+    <script>
+        
+        
+        // Wrap your existing script inside the DOMContentLoaded event
+        document.addEventListener('DOMContentLoaded', () => {
+            const raceInput = document.getElementById('raceInput');
+            const dndClassInput = document.getElementById('dndClassInput')
+            const specializationInput = document.getElementById('specializationInput')
+            const optionsContainer = document.getElementById('optionsContainer');
+            const options = document.querySelectorAll('.dropdown-option');
+
+            // Show dropdown when input is focused
+            raceInput.addEventListener('focus', () => {
+                console.log("Race input field focused, showing dropdown.");
+                optionsContainer.style.display = 'block'; // Display dropdown when input is focused
+            });
+
+            // Hide dropdown if clicking outside of the dropdown and input
+            document.addEventListener('click', (event) => {
+                if (!raceInput.contains(event.target) && !optionsContainer.contains(event.target)) {
+                    console.log("Clicked outside the dropdown. Hiding dropdown.");
+                    optionsContainer.style.display = 'none'; // Hide dropdown if clicking outside
+                }
+            });
+
+            // Add click event to each option to update the input field
+            options.forEach(option => {
+                option.addEventListener('click', () => {
+                    const optionText = option.textContent.trim(); // Get the selected option's text
+                    console.log("Dropdown option clicked:", optionText); // Log the clicked option's text
+                    raceInput.value = optionText; // Replace input field with the selected option's text
+                    optionsContainer.style.display = 'none'; // Hide dropdown after selection
+                    raceInput.focus(); // Focus back on the input field
+                });
+            });
+            document.getElementById('firstNameInput').addEventListener('input', function(e) {
+                this.value = this.value.replace(/[0-9]/g, ''); // Remove any numbers
+            });
+            document.getElementById('lastNameInput').addEventListener('input', function(e) {
+                this.value = this.value.replace(/[0-9]/g, ''); // Remove any numbers
+            });
+            document.getElementById('ageInput').addEventListener('input', function(e) {
+                this.value = this.value.replace(/[^0-9]/g, ''); // Allow only numbers
+            });
+            document.getElementById('raceInput').addEventListener('input', function(e) {
+                this.value = this.value.replace(/[0-9]/g, ''); // Remove any numbers
+            });
+            document.getElementById('dndClassInput').addEventListener('input', function(e) {
+                this.value = this.value.replace(/[0-9]/g, ''); // Remove any numbers
+            });
+            document.getElementById('specializationInput').addEventListener('input', function(e) {
+                this.value = this.value.replace(/[0-9]/g, ''); // Remove any numbers
+            });
+        });
+        
+    </script>
+    
+
 </body>
 </html>
 
