@@ -25,8 +25,8 @@
     <label for = "dndclass"> D&D Class:</label>
     <input type = "text" id = "dndClassInput" name = "dndclass" value="<%= user.dndclass %>" required><br>
     <br>
-    <label for = "specialization"> Specialization:</label>
-    <input type = "text" id = "specializationInput" name = "specialization" value="<%= user.specialization %>" required><br>
+    <label for = "subclass"> subclass:</label>
+    <input type = "text" id = "subclassInput" name = "subclass" value="<%= user.subclass %>" required><br>
     <br>   
     <button type="submit">Update Character</button>
 </form>
@@ -46,7 +46,7 @@
     document.getElementById('dndClassInput').addEventListener('input', function(e) {
         this.value = this.value.replace(/[0-9]/g, ''); // Remove any numbers
     });
-    document.getElementById('specializationInput').addEventListener('input', function(e) {
+    document.getElementById('subclassInput').addEventListener('input', function(e) {
         this.value = this.value.replace(/[0-9]/g, ''); // Remove any numbers
     });
 </script>

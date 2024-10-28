@@ -1,253 +1,355 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="/style.css">
-<title>Add New Character</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Creation</title>
+    <style>
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-options {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            z-index: 1;
+        }
+
+        .dropdown-option {
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        .dropdown-option:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
 </head>
 <body>
-<h1>Add New Character</h1>
-<form action="/users" method="POST">
-    <label for = "first_name">First Name:</label>
-    <input type = "text" id = "firstNameInput" name = "first_name" placeholder = "Enter First Name" required><br>
-    <br>
-    <label for = "last_name"> Last Name:</label>
-    <input type = "text" id = "lastNameInput" name = "last_name" placeholder = "Enter Last Name" required><br>
-    <br>
-    <label for="age">Age:</label>
-    <input type="number" id = "ageInput" name="age" placeholder = "Enter Age" required><br>
-    <br>
-    <!--Race Dropdown Menu-->
-    <div class = "dropdown"> 
-        <label for = "race"> Race:</label>
-        <input type ="text" id="raceInput" class = "dropdown-input" placeholder="Select or enter category" autocomplete = "off"> 
-        <div id="optionsContainer" class = "dropdown-options">
-            <div class="dropdown-option">Human</div>
-            <div class="dropdown-option">Elf</div> 
-            <div class="dropdown-option">High Elf</div> 
-            <div class="dropdown-option">Wood Elf</div>
-            <div class="dropdown-option">Drow</div> 
-            <div class="dropdown-option">Dwarf</div> 
-            <div class="dropdown-option">Hill Dwarf</div> 
-            <div class="dropdown-option">Mountain Dwarf</div> 
-            <div class="dropdown-option">Halfling</div> 
-            <div class="dropdown-option">Lightfoot</div> 
-            <div class="dropdown-option">Stout</div> 
-            <div class="dropdown-option">Gnome</div> 
-            <div class="dropdown-option">Forest Gnome</div> 
-            <div class="dropdown-option">Rock Gnome</div> 
-            <div class="dropdown-option">Half-Elf</div> 
-            <div class="dropdown-option">Half-Orc</div> 
-            <div class="dropdown-option">Tiefling</div> 
-            <div class="dropdown-option">Dragonborn</div> 
-            <div class="dropdown-option">Aasimar</div> 
-            <div class="dropdown-option">Genasi</div> 
-            <div class="dropdown-option">Air Genasi</div> 
-            <div class="dropdown-option">Earth Genasi</div> 
-            <div class="dropdown-option">Fire Genasi</div> 
-            <div class="dropdown-option">Water Genasi</div> 
-            <div class="dropdown-option">Firbolg</div> 
-            <div class="dropdown-option">Kenku</div> 
-            <div class="dropdown-option">Lizardfolk</div> 
-            <div class="dropdown-option">Goliath</div> 
-            <div class="dropdown-option">Tabaxi</div> 
-            <div class="dropdown-option">Triton</div> 
-            <div class="dropdown-option">Yuan-ti Pureblood</div> 
-            <div class="dropdown-option">Kobold</div> 
-            <div class="dropdown-option">Goblin</div> 
-            <div class="dropdown-option">Orc</div> 
-            <div class="dropdown-option">Bugbear</div> 
-            <div class="dropdown-option">Hobgoblin</div> 
-            <div class="dropdown-option">Eladrin</div> 
-            <div class="dropdown-option">Fey Elf</div> 
-            <div class="dropdown-option">Satyr</div> 
-            <div class="dropdown-option">Gith</div> 
-            <div class="dropdown-option">Githyanki</div> 
-            <div class="dropdown-option">Githzerai</div>        
+    <h1>Create Your Character</h1>
+    <form id="characterForm">
+        <label for="firstNameInput">First Name:</label>
+        <input type="text" id="firstNameInput" required>
+
+        <label for="lastNameInput">Last Name:</label>
+        <input type="text" id="lastNameInput" required>
+
+        <label for="ageInput">Age:</label>
+        <input type="number" id="ageInput" required>
+
+        <div class="dropdown">
+            <label for="raceInput">Race:</label>
+            <input type="text" id="raceInput" readonly placeholder="Select Race">
+            <div id="raceOptionsContainer" class="dropdown-options">
+                <div class="dropdown-option">Human</div>
+                <div class="dropdown-option">Elf</div>
+                <div class="dropdown-option">High Elf</div>
+                <div class="dropdown-option">Wood Elf</div>
+                <div class="dropdown-option">Drow</div>
+                <div class="dropdown-option">Dwarf</div>
+                <div class="dropdown-option">Hill Dwarf</div>
+                <div class="dropdown-option">Mountain Dwarf</div>
+                <div class="dropdown-option">Halfling</div>
+                <div class="dropdown-option">Lightfoot</div>
+                <div class="dropdown-option">Stout</div>
+                <div class="dropdown-option">Gnome</div>
+                <div class="dropdown-option">Forest Gnome</div>
+                <div class="dropdown-option">Rock Gnome</div>
+                <div class="dropdown-option">Half-Elf</div>
+                <div class="dropdown-option">Half-Orc</div>
+                <div class="dropdown-option">Tiefling</div>
+                <div class="dropdown-option">Dragonborn</div>
+                <div class="dropdown-option">Aasimar</div>
+                <div class="dropdown-option">Genasi</div>
+                <div class="dropdown-option">Air Genasi</div>
+                <div class="dropdown-option">Earth Genasi</div>
+                <div class="dropdown-option">Fire Genasi</div>
+                <div class="dropdown-option">Water Genasi</div>
+                <div class="dropdown-option">Firbolg</div>
+                <div class="dropdown-option">Kenku</div>
+                <div class="dropdown-option">Lizardfolk</div>
+                <div class="dropdown-option">Goliath</div>
+                <div class="dropdown-option">Tabaxi</div>
+                <div class="dropdown-option">Triton</div>
+                <div class="dropdown-option">Yuan-ti Pureblood</div>
+                <div class="dropdown-option">Kobold</div>
+                <div class="dropdown-option">Goblin</div>
+                <div class="dropdown-option">Orc</div>
+                <div class="dropdown-option">Bugbear</div>
+                <div class="dropdown-option">Hobgoblin</div>
+                <div class="dropdown-option">Eladrin</div>
+                <div class="dropdown-option">Fey Elf</div>
+                <div class="dropdown-option">Satyr</div>
+                <div class="dropdown-option">Gith</div>
+                <div class="dropdown-option">Githyanki</div>
+                <div class="dropdown-option">Githzerai</div>
+
+            </div>
         </div>
-    </div>
-    <br>   
-    <!--D&D Class Dropdown Menu-->
-    <div class = "dropdown">
-        <label for = "dndclass"> D&D Class:</label>
-        <input type = "text" id = "dndClassInput" class = "dropdown-input" name = "dndclass" placeholder = "Enter Class" required><br>
-        <div id="optionsContainer" class = "dropdown-options">
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div>
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div>  
+
+        <div class="dropdown">
+            <label for="dndClassInput">Class:</label>
+            <input type="text" id="dndClassInput" readonly placeholder="Select Class">
+            <div id="classOptionsContainer" class="dropdown-options">
+                <div class="dropdown-option">Barbarian</div>
+                <div class="dropdown-option">Bard</div>
+                <div class="dropdown-option">Cleric</div>
+                <div class="dropdown-option">Druid</div>
+                <div class="dropdown-option">Fighter</div>
+                <div class="dropdown-option">Monk</div>
+                <div class="dropdown-option">Paladin</div>
+                <div class="dropdown-option">Ranger</div>
+                <div class="dropdown-option">Rogue</div>
+                <div class="dropdown-option">Sorcerer</div>
+                <div class="dropdown-option">Warlock</div>
+                <div class="dropdown-option">Wizard</div>
+            </div>
         </div>
-    </div>
-    <br>
-    <!--Specialization Dropdown Menu-->
-    <div class = "dropdown">
-        <label for = "specialization"> Specialization:</label>
-        <input type = "text" id = "specializationInput" class = "dropdown-input" name = "specialization" placeholder = "Enter Specialization" required><br>
-        <div id="optionsContainer" class = "dropdown-options">
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
-            <div class="dropdown-option"></div> 
+
+        <div class="dropdown">
+            <label for="subclassInput">Subclass:</label>
+            <input type="text" id="subclassInput" readonly placeholder="Must Choose Class First">
+            <div id="subclassOptionsContainer" class="dropdown-options"></div>
         </div>
-    
-    </div>
-    <br>
-    <button type="submit">Add Character</button>
-</form>
-    <!--Makes sure the right data types go into the categories and removes the wrong ones-->
+
+        <button type="submit" id="addCharacterButton">Add Character</button>
+    </form>
+
     <script>
-        
-        
-        // Wrap your existing script inside the DOMContentLoaded event
         document.addEventListener('DOMContentLoaded', () => {
             const raceInput = document.getElementById('raceInput');
-            const dndClassInput = document.getElementById('dndClassInput')
-            const specializationInput = document.getElementById('specializationInput')
-            const optionsContainer = document.getElementById('optionsContainer');
-            const options = document.querySelectorAll('.dropdown-option');
-            //Code for RaceInput
-            // Show dropdown when input is focused
-            raceInput.addEventListener('focus', () => {
-                console.log("Race input field focused, showing dropdown.");
-                optionsContainer.style.display = 'block'; // Display dropdown when input is focused
-            });
-
-            // Hide dropdown if clicking outside of the dropdown and input
-            document.addEventListener('click', (event) => {
-                if (!raceInput.contains(event.target) && !optionsContainer.contains(event.target)) {
-                    console.log("Clicked outside the dropdown. Hiding dropdown.");
-                    optionsContainer.style.display = 'none'; // Hide dropdown if clicking outside
-                }
-            });
-
-            // Add click event to each option to update the input field
-            options.forEach(option => {
-                option.addEventListener('click', () => {
-                    const optionText = option.textContent.trim(); // Get the selected option's text
-                    console.log("Dropdown option clicked:", optionText); // Log the clicked option's text
-                    raceInput.value = optionText; // Replace input field with the selected option's text
-                    optionsContainer.style.display = 'none'; // Hide dropdown after selection
-                    raceInput.focus(); // Focus back on the input field
+            const dndClassInput = document.getElementById('dndClassInput');
+            const subclassInput = document.getElementById('subclassInput');
+            const addCharacterButton = document.getElementById('addCharacterButton'); // Button to add character
+    
+            const classSubclasses = {
+                barbarian: [
+                    "Path of the Berserker",
+                    "Path of the Totem Warrior",
+                    "Path of the Ancestral Guardian",
+                    "Path of the Storm Herald",
+                    "Path of the Zealot",
+                    "Path of the Battlerager",
+                    "Path of Wild Magic",
+                    "Path of the Beast"
+                ],
+                bard: [
+                    "College of Lore",
+                    "College of Valor",
+                    "College of Glamour",
+                    "College of Swords",
+                    "College of Whispers",
+                    "College of Creation",
+                    "College of Spirits"
+                ],
+                cleric: [
+                    "Life Domain",
+                    "Light Domain",
+                    "Knowledge Domain",
+                    "Nature Domain",
+                    "Tempest Domain",
+                    "War Domain",
+                    "Trickery Domain",
+                    "Grave Domain",
+                    "Order Domain",
+                    "Peace Domain",
+                    "Twilight Domain"
+                ],
+                druid: [
+                    "Circle of the Land",
+                    "Circle of the Moon",
+                    "Circle of Dreams",
+                    "Circle of Spores",
+                    "Circle of Wildfire",
+                    "Circle of the Stars"
+                ],
+                fighter: [
+                    "Champion",
+                    "Battle Master",
+                    "Eldritch Knight",
+                    "Arcane Archer",
+                    "Cavalier",
+                    "Samurai",
+                    "Echo Knight"
+                ],
+                monk: [
+                    "Way of the Open Hand",
+                    "Way of Shadow",
+                    "Way of the Four Elements",
+                    "Way of the Drunken Master",
+                    "Way of the Kensei",
+                    "Way of the Astral Self",
+                    "Way of the Sun Soul"
+                ],
+                paladin: [
+                    "Oath of Devotion",
+                    "Oath of the Ancients",
+                    "Oath of Vengeance",
+                    "Oath of Conquest",
+                    "Oath of Redemption",
+                    "Oath of Glory"
+                ],
+                ranger: [
+                    "Hunter",
+                    "Beast Master",
+                    "Gloom Stalker",
+                    "Horizon Walker",
+                    "Monster Slayer",
+                    "Drakewarden"
+                ],
+                rogue: [
+                    "Thief",
+                    "Assassin",
+                    "Arcane Trickster",
+                    "Inquisitive",
+                    "Mastermind",
+                    "Scout",
+                    "Soulknife",
+                    "Phantom"
+                ],
+                sorcerer: [
+                    "Draconic Bloodline",
+                    "Wild Magic",
+                    "Divine Soul",
+                    "Shadow Magic",
+                    "Storm Sorcery",
+                    "Clockwork Soul",
+                    "Aberrant Mind"
+                ],
+                warlock: [
+                    "The Archfey",
+                    "The Fiend",
+                    "The Great Old One",
+                    "The Celestial",
+                    "The Hexblade",
+                    "The Fathomless",
+                    "The Genie"
+                ],
+                wizard: [
+                    "School of Abjuration",
+                    "School of Conjuration",
+                    "School of Divination",
+                    "School of Enchantment",
+                    "School of Evocation",
+                    "School of Illusion",
+                    "School of Necromancy",
+                    "School of Transmutation",
+                    "School of War Magic"
+                ]
+            };
+    
+            const showDropdownOptions = (input, optionsContainer) => {
+                optionsContainer.style.display = 'block';
+                optionsContainer.querySelectorAll('.dropdown-option').forEach(option => {
+                    option.classList.remove('active');
                 });
-            });
-            //Code for dndClassInput
-            // Show dropdown when input is focused
-            dndClassInput.addEventListener('focus', () => {
-                console.log("dndClassInput field focused, showing dropdown.");
-                optionsContainer.style.display = 'block'; // Display dropdown when input is focused
-            });
-
-            // Hide dropdown if clicking outside of the dropdown and input
-            document.addEventListener('click', (event) => {
-                if (!dndClassInput.contains(event.target) && !optionsContainer.contains(event.target)) {
-                    console.log("Clicked outside the dropdown. Hiding dropdown.");
-                    optionsContainer.style.display = 'none'; // Hide dropdown if clicking outside
-                }
-            });
-
-            // Add click event to each option to update the input field
-            options.forEach(option => {
-                option.addEventListener('click', () => {
-                    const optionText = option.textContent.trim(); // Get the selected option's text
-                    console.log("Dropdown option clicked:", optionText); // Log the clicked option's text
-                    dndClassInput.value = optionText; // Replace input field with the selected option's text
-                    optionsContainer.style.display = 'none'; // Hide dropdown after selection
-                    dndClassInput.focus(); // Focus back on the input field
+            };
+    
+            const hideDropdownOptions = (optionsContainer) => {
+                optionsContainer.style.display = 'none';
+            };
+    
+            const setupDropdown = (input, optionsContainer, dropdownOptions) => {
+                input.addEventListener('focus', () => {
+                    showDropdownOptions(input, optionsContainer);
                 });
-            });
-            //Code for specializationInput
-            // Show dropdown when input is focused
-            specializationInput.addEventListener('focus', () => {
-                console.log("specializationInput field focused, showing dropdown.");
-                optionsContainer.style.display = 'block'; // Display dropdown when input is focused
-            });
-
-            // Hide dropdown if clicking outside of the dropdown and input
-            document.addEventListener('click', (event) => {
-                if (!specializationInput.contains(event.target) && !optionsContainer.contains(event.target)) {
-                    console.log("Clicked outside the dropdown. Hiding dropdown.");
-                    optionsContainer.style.display = 'none'; // Hide dropdown if clicking outside
-                }
-            });
-
-            // Add click event to each option to update the input field
-            options.forEach(option => {
-                option.addEventListener('click', () => {
-                    const optionText = option.textContent.trim(); // Get the selected option's text
-                    console.log("Dropdown option clicked:", optionText); // Log the clicked option's text
-                    specializationInput.value = optionText; // Replace input field with the selected option's text
-                    optionsContainer.style.display = 'none'; // Hide dropdown after selection
-                    specializationInput.focus(); // Focus back on the input field
+    
+                input.addEventListener('input', () => {
+                    const value = input.value.toLowerCase();
+                    optionsContainer.querySelectorAll('.dropdown-option').forEach(option => {
+                        const text = option.textContent.toLowerCase();
+                        if (text.includes(value)) {
+                            option.style.display = 'block';
+                        } else {
+                            option.style.display = 'none';
+                        }
+                    });
+                    showDropdownOptions(input, optionsContainer);
                 });
-            });
-            document.getElementById('firstNameInput').addEventListener('input', function(e) {
-                this.value = this.value.replace(/[0-9]/g, ''); // Remove any numbers
-            });
-            document.getElementById('lastNameInput').addEventListener('input', function(e) {
-                this.value = this.value.replace(/[0-9]/g, ''); // Remove any numbers
-            });
-            document.getElementById('ageInput').addEventListener('input', function(e) {
-                this.value = this.value.replace(/[^0-9]/g, ''); // Allow only numbers
-            });
-            document.getElementById('raceInput').addEventListener('input', function(e) {
-                this.value = this.value.replace(/[0-9]/g, ''); // Remove any numbers
-            });
-            document.getElementById('dndClassInput').addEventListener('input', function(e) {
-                this.value = this.value.replace(/[0-9]/g, ''); // Remove any numbers
-            });
-            document.getElementById('specializationInput').addEventListener('input', function(e) {
-                this.value = this.value.replace(/[0-9]/g, ''); // Remove any numbers
-            });
+    
+                const options = optionsContainer.querySelectorAll('.dropdown-option');
+                options.forEach(option => {
+                    option.addEventListener('click', () => {
+                        input.value = option.textContent;
+                        hideDropdownOptions(optionsContainer);
+    
+                        if (input === dndClassInput) {
+                            const selectedClass = option.textContent.toLowerCase();
+                            subclassInput.value = ''; // Clear subclass input when changing class
+                            updateSubclassOptions(selectedClass);
+                        }
+                    });
+                });
+    
+                document.addEventListener('click', (event) => {
+                    if (!input.contains(event.target) && !optionsContainer.contains(event.target)) {
+                        hideDropdownOptions(optionsContainer);
+                    }
+                });
+            };
+    
+            const updateSubclassOptions = (selectedClass) => {
+                const subclassOptionsContainer = document.getElementById('subclassOptionsContainer');
+                subclassOptionsContainer.innerHTML = '';
+    
+                if (classSubclasses[selectedClass]) {
+                    classSubclasses[selectedClass].forEach(subclass => {
+                        const option = document.createElement('div');
+                        option.className = 'dropdown-option';
+                        option.textContent = subclass;
+                        option.addEventListener('click', () => {
+                            subclassInput.value = subclass;
+                            hideDropdownOptions(subclassOptionsContainer);
+                        });
+                        subclassOptionsContainer.appendChild(option);
+                    });
+                    showDropdownOptions(subclassInput, subclassOptionsContainer);
+                } else {
+                    hideDropdownOptions(subclassOptionsContainer);
+                }
+            };
+    
+            setupDropdown(raceInput, document.getElementById('raceOptionsContainer'), []);
+            setupDropdown(dndClassInput, document.getElementById('classOptionsContainer'), []);
+            setupDropdown(subclassInput, document.getElementById('subclassOptionsContainer'), []);
+
+    
+            // Validation for text input fields (first name, last name, age)
+            const validateInput = (inputField, isNumeric) => {
+                inputField.addEventListener('input', () => {
+                    let value = inputField.value;
+                    // Allow letters, spaces, hyphens and numbers for age
+                    if (isNumeric) {
+                        value = value.replace(/[^\d\s-]/g, ''); // Remove non-numeric characters, allowing spaces and hyphens
+                    } else {
+                        value = value.replace(/[^a-zA-Z\s-]/g, ''); // Remove non-letter characters, allowing spaces and hyphens
+                    }
+                    inputField.value = value;
+                });
+            };
+    
+            validateInput(document.getElementById('firstNameInput'), false); // First Name: Only letters, spaces, and hyphens
+            validateInput(document.getElementById('lastNameInput'), false); // Last Name: Only letters, spaces, and hyphens
+            validateInput(document.getElementById('ageInput'), true); // Age: Only numbers
+    
+            // Validation for select fields (race, class, subclass)
+            const validateSelect = (selectField) => {
+                selectField.addEventListener('change', () => {
+                    if (selectField.value === "") {
+                        alert(`Please select a valid option for ${selectField.name}.`);
+                    }
+                });
+            };
+    
+            validateSelect(document.getElementById('raceSelect')); // Race selection
+            validateSelect(document.getElementById('classSelect')); // D&D Class selection
+            validateSelect(document.getElementById('subclassSelect')); // Subclass selection
+            
         });
-        
     </script>
     
-
 </body>
 </html>
-
-
-
-
- 

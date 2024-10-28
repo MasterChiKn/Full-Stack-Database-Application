@@ -49,9 +49,9 @@ app.get('/users/new', (req, res) => {
  
 // Add a new user (CREATE)
 app.post('/users', (req, res) => {
-  const { name, email, age } = req.body;
-  const query = 'INSERT INTO users (first_name, last_name, age, race, dndclass, specialization) VALUES (?, ?, ?, ?, ?, ?)';
-  db.query(query, [first_name, last_name, age, race, dndclass, specialization], (err, result) => {
+  const { first_name, last_name, age, race, dndclass, subclass } = req.body;
+  const query = 'INSERT INTO users (first_name, last_name, age, race, dndclass, subclass) VALUES (?, ?, ?, ?, ?, ?)';
+  db.query(query, [first_name, last_name, age, race, dndclass, subclass], (err, result) => {
     if (err) {
       throw err;
     }
@@ -74,9 +74,9 @@ app.get('/users/edit/:id', (req, res) => {
 // Update user (UPDATE)
 app.post('/users/update/:id', (req, res) => {
   const { id } = req.params;
-  const { first_name, last_name, age, race, dndclass, specialization } = req.body;
-  const query = 'UPDATE users SET first_name = ?, last_name = ?, age = ?, race = ?, dndclass = ?, specialization = ? WHERE id = ?';
-  db.query(query, [first_name, last_name, age, race, dndclass, specialization, id], (err, result) => {
+  const { first_name, last_name, age, race, dndclass, subclass } = req.body;
+  const query = 'UPDATE users SET first_name = ?, last_name = ?, age = ?, race = ?, dndclass = ?, subclass = ? WHERE id = ?';
+  db.query(query, [first_name, last_name, age, race, dndclass, subclass, id], (err, result) => {
     if (err) {
       throw err;
     }

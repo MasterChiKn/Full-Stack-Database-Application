@@ -27,22 +27,20 @@ select {
 }
 
 .dropdown-options {
-    display: none; /* Hidden by default */
-    position: absolute;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    z-index: 1;
-    max-height: 150px; /* Set max height for scrolling */
-    overflow-y: auto; /* Enable vertical scrolling */
-    width: 100%;
+    display: none; /* Initially hidden */
+    border: 1px solid #ccc; /* Add border to dropdown */
+    max-height: 200px; /* Limit dropdown height */
+    overflow-y: auto; /* Enable scrolling */
+    background-color: white; /* Set background color */
+    z-index: 1000; /* Ensure dropdown appears above other content */
 }
 
 .dropdown-option {
-    padding: 10px;
-    cursor: pointer;
+    padding: 8px; /* Add padding to options */
+    cursor: pointer; /* Change cursor on hover */
 }
 
-.dropdown-option:hover {
-    background-color: #f0f0f0; /* Highlight on hover */
+.dropdown-option:hover,
+.dropdown-option.active {
+    background-color: #f1f1f1; /* Change background color on hover */
 }
