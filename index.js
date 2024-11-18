@@ -12,6 +12,8 @@ app.use(bodyParser.json());
 // Set EJS as the templating engine (optional for HTML rendering)
 app.set('view engine', 'ejs');
  
+app.use(express.static('public'));
+
 // Create connection to MySQL
 const db = mysql.createConnection({
   host: 'localhost',  // Replace with your database host
@@ -101,4 +103,3 @@ app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 
-app.use(express.static('public'));
